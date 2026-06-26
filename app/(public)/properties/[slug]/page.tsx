@@ -28,7 +28,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const property = await getPropertyBySlug(slug);
+  const property = await getPropertyBySlug(slug).catch(() => null);
   if (!property) return {};
   return {
     title: property.title,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PropertyDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const property = await getPropertyBySlug(slug);
+  const property = await getPropertyBySlug(slug).catch(() => null);
   if (!property) notFound();
 
   const primaryImage = property.images.find((i) => i.isPrimary) ?? property.images[0];

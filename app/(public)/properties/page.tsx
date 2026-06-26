@@ -48,8 +48,8 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
   };
 
   const [{ data: properties, total, page, totalPages }, cities] = await Promise.all([
-    getProperties(filters),
-    getDistinctCities(),
+    getProperties(filters).catch(() => ({ data: [], total: 0, page: 1, limit: 12, totalPages: 0 })),
+    getDistinctCities().catch(() => []),
   ]);
 
   const buildPageUrl = (p: number) => {

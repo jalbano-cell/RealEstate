@@ -11,9 +11,9 @@ import { AgentCard } from "@/components/agent/agent-card";
 
 export default async function HomePage() {
   const [featuredProperties, testimonials, agents] = await Promise.all([
-    getFeaturedProperties(6),
-    findFeaturedTestimonials(3),
-    getAgents(),
+    getFeaturedProperties(6).catch(() => []),
+    findFeaturedTestimonials(3).catch(() => []),
+    getAgents().catch(() => []),
   ]);
 
   const spotlightAgents = agents.slice(0, 3);

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AgentsPage() {
-  const agents = await getAgents();
+  const agents = await getAgents().catch(() => []);
 
   return (
     <div className="pt-24 pb-20 min-h-screen bg-white">
