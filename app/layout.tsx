@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cinzel, Josefin_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-cinzel",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  variable: "--font-josefin",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${cinzel.variable} ${josefinSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-neutral-900 font-sans">
         {children}
       </body>

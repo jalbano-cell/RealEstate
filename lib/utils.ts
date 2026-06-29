@@ -33,3 +33,9 @@ export function truncate(text: string, length: number): string {
   if (text.length <= length) return text;
   return text.slice(0, length).trimEnd() + "…";
 }
+
+// Converts Prisma Decimal (and other non-plain types) to plain JS values
+// so the result is safe to pass from Server Components to Client Components.
+export function serializeForClient<T>(data: T): T {
+  return JSON.parse(JSON.stringify(data));
+}

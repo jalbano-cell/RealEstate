@@ -10,25 +10,29 @@ import {
   deleteProperty,
   getAllPropertiesAdmin,
 } from "@/repositories/property.repository";
-import { slugify } from "@/lib/utils";
+import { slugify, serializeForClient } from "@/lib/utils";
 import type { PropertyFilters } from "@/types";
 import type { Prisma } from "@/app/generated/prisma/client";
 import type { PropertyFormData } from "@/lib/validations/property";
 
 export async function getProperties(filters: PropertyFilters) {
-  return findProperties(filters);
+  const result = await findProperties(filters);
+  return serializeForClient(result);
 }
 
 export async function getFeaturedProperties(limit?: number) {
-  return findFeaturedProperties(limit);
+  const properties = await findFeaturedProperties(limit);
+  return serializeForClient(properties);
 }
 
 export async function getPropertyBySlug(slug: string) {
-  return findPropertyBySlug(slug);
+  const property = await findPropertyBySlug(slug);
+  return property ? serializeForClient(property) : null;
 }
 
 export async function getPropertyById(id: string) {
-  return findPropertyById(id);
+  const property = await findPropertyById(id);
+  return property ? serializeForClient(property) : null;
 }
 
 export async function getPropertyStats() {

@@ -25,12 +25,16 @@ export default async function HomePage() {
       <FeaturedListings properties={featuredProperties} />
 
       {spotlightAgents.length > 0 && (
-        <section className="py-20 bg-neutral-50">
+        <section className="py-24 bg-neutral-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <p className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-2">
-                Meet the Team
-              </p>
+            <div className="text-center mb-14">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <div className="h-px w-8 bg-amber-500" />
+                <span className="text-amber-600 text-xs font-semibold uppercase tracking-[0.2em]">
+                  Meet the Team
+                </span>
+                <div className="h-px w-8 bg-amber-500" />
+              </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900">
                 Our Top Agents
               </h2>

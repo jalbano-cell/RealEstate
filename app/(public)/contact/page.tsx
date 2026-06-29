@@ -18,19 +18,23 @@ export default function ContactPage() {
   return (
     <div className="pt-24 pb-20 min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-2">
-            Get In Touch
-          </p>
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <div className="h-px w-8 bg-amber-500" />
+            <span className="text-amber-600 text-xs font-semibold uppercase tracking-[0.2em]">
+              Get In Touch
+            </span>
+            <div className="h-px w-8 bg-amber-500" />
+          </div>
           <h1 className="text-4xl font-bold text-neutral-900 mb-4">Contact PrimeRealty</h1>
-          <p className="text-neutral-500 max-w-xl mx-auto">
+          <p className="text-neutral-500 max-w-xl mx-auto text-sm leading-relaxed">
             Whether you&apos;re buying, selling, or just exploring your options, our team is ready to help.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white border border-neutral-200 rounded-xl p-8 shadow-sm">
+          <div className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm">
             <h2 className="text-xl font-semibold text-neutral-900 mb-6">Send Us a Message</h2>
             <ContactForm />
           </div>
@@ -39,7 +43,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="space-y-4">
               {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                <div key={label} className="flex items-start gap-4 p-5 bg-neutral-50 rounded-xl border border-neutral-100">
+                <div key={label} className="flex items-start gap-4 p-5 bg-neutral-50 rounded-2xl border border-neutral-100 hover:border-neutral-200 hover:bg-white transition-all duration-200">
                   <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
                     <Icon className="h-5 w-5 text-amber-600" />
                   </div>

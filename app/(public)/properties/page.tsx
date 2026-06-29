@@ -8,7 +8,7 @@ import { getProperties } from "@/services/property.service";
 import { getDistinctCities } from "@/repositories/property.repository";
 import type { PropertyFilters as Filters, PropertyType, ListingType } from "@/types";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Property Listings",
@@ -61,9 +61,15 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
   return (
     <div className="pt-24 pb-20 min-h-screen bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-px w-8 bg-amber-500 shrink-0" />
+            <span className="text-amber-600 text-xs font-semibold uppercase tracking-[0.2em]">
+              Browse
+            </span>
+          </div>
           <h1 className="text-3xl font-bold text-neutral-900 mb-1">Property Listings</h1>
-          <p className="text-neutral-500">
+          <p className="text-neutral-500 text-sm">
             {total} {total === 1 ? "property" : "properties"} found
           </p>
         </div>
@@ -77,13 +83,13 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
 
           <div className="flex-1 min-w-0">
             {properties.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 text-center">
-                <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
-                  <span className="text-2xl">🏠</span>
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-neutral-100 flex items-center justify-center mb-5">
+                  <Home className="h-8 w-8 text-neutral-300" />
                 </div>
-                <h3 className="font-semibold text-neutral-900 mb-2">No properties found</h3>
-                <p className="text-neutral-500 text-sm max-w-xs">
-                  Try adjusting your filters to see more results.
+                <h3 className="font-semibold text-neutral-900 mb-2 text-lg">No properties found</h3>
+                <p className="text-neutral-500 text-sm max-w-xs leading-relaxed">
+                  Try adjusting your filters or clearing them to see more results.
                 </p>
               </div>
             ) : (

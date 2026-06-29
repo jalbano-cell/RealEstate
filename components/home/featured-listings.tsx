@@ -12,19 +12,22 @@ export function FeaturedListings({ properties }: FeaturedListingsProps) {
   if (properties.length === 0) return null;
 
   return (
-    <section id="featured" className="py-20 bg-white">
+    <section id="featured" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
           <div>
-            <p className="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-2">
-              Hand-Picked
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-px w-8 bg-amber-500 shrink-0" />
+              <span className="text-amber-600 text-xs font-semibold uppercase tracking-[0.2em]">
+                Hand-Picked
+              </span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 leading-tight">
               Featured Properties
             </h2>
           </div>
           <Button asChild variant="outline">
-            <Link href="/properties" className="flex items-center gap-2">
+            <Link href="/properties" className="flex items-center gap-2 shrink-0">
               View All Listings
               <ArrowRight className="h-4 w-4" />
             </Link>

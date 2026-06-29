@@ -16,7 +16,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
 
   return (
     <Link href={`/properties/${property.slug}`} className="group block">
-      <div className="bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+      <div className="bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-xl hover:border-neutral-300 transition-all duration-300 hover:-translate-y-1">
         <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
           {primaryImage ? (
             <Image
@@ -42,7 +42,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
           </div>
 
           <button
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-neutral-400 hover:text-red-500 transition-colors shadow-sm"
+            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-neutral-400 hover:text-red-500 hover:bg-white transition-all duration-200 shadow-md cursor-pointer"
             aria-label="Save property"
             onClick={(e) => e.preventDefault()}
           >
@@ -51,36 +51,34 @@ export function PropertyCard({ property }: PropertyCardProps) {
         </div>
 
         <div className="p-5">
-          <div className="mb-1">
-            <p className="text-xl font-bold text-neutral-900">
-              {formatPrice(property.price.toString())}
-              {property.listingType === "FOR_RENT" && (
-                <span className="text-sm font-normal text-neutral-500">/mo</span>
-              )}
-            </p>
-          </div>
+          <p className="text-xl font-bold text-neutral-900 tabular-nums mb-1">
+            {formatPrice(property.price.toString())}
+            {property.listingType === "FOR_RENT" && (
+              <span className="text-sm font-normal text-neutral-500">/mo</span>
+            )}
+          </p>
 
-          <h3 className="font-semibold text-neutral-900 mb-1 line-clamp-1 group-hover:text-amber-600 transition-colors">
+          <h3 className="font-semibold text-neutral-900 mb-2 line-clamp-1 group-hover:text-amber-600 transition-colors duration-200 text-sm tracking-wide">
             {property.title}
           </h3>
 
-          <p className="text-sm text-neutral-500 flex items-center gap-1 mb-4">
-            <MapPin className="h-3.5 w-3.5 shrink-0" />
+          <p className="text-xs text-neutral-500 flex items-center gap-1.5 mb-4">
+            <MapPin className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
             {property.address}, {property.city}
           </p>
 
-          <div className="flex items-center gap-4 text-sm text-neutral-600 border-t border-neutral-100 pt-4">
+          <div className="flex items-center gap-4 text-xs text-neutral-500 border-t border-neutral-100 pt-4">
             <span className="flex items-center gap-1.5">
-              <Bed className="h-4 w-4 text-neutral-400" />
+              <Bed className="h-3.5 w-3.5 text-neutral-400" />
               {property.bedrooms} {property.bedrooms === 1 ? "Bed" : "Beds"}
             </span>
             <span className="flex items-center gap-1.5">
-              <Bath className="h-4 w-4 text-neutral-400" />
+              <Bath className="h-3.5 w-3.5 text-neutral-400" />
               {property.bathrooms} {property.bathrooms === 1 ? "Bath" : "Baths"}
             </span>
             {property.squareFeet && (
-              <span className="flex items-center gap-1.5">
-                <Maximize className="h-4 w-4 text-neutral-400" />
+              <span className="flex items-center gap-1.5 ml-auto">
+                <Maximize className="h-3.5 w-3.5 text-neutral-400" />
                 {property.squareFeet.toLocaleString()} ft²
               </span>
             )}
